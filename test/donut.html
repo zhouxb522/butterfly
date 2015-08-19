@@ -20,16 +20,20 @@
 		            ['Very Satified', 28]
 		        ],
 		        type : 'donut',
-		        onclick: function (d, i) { console.log("onclick", d, i); },
+		        onclick: function (d, i) { 
+		        	console.log("onclick", d);
+		        	alert(d.id + "--" + d.value + "--" + d.ratio + "--" + d.index + "--" + d.name); 
+		        	console.log("onclick", d, i); 
+		        },
 		        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
 		        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
 		    },
 		    donut: {
 		        title: "5632 votes",
-		        //width: 50,
+		        //width: 5000,
 				label: {
-    				show: false
-    			,	threshold: 0.06
+    				show: true
+    			,	threshold: 0.05
     			,	expand: true	
   				}
 		    }
