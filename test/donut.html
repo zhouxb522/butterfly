@@ -13,11 +13,11 @@
 		var chart = c3.generate({
 		    data: {
 		        columns: [
-		            ['Satisfied', 230],
-		            ['Neutral', 200],
-		            ['Unsatisfied', 160],
-		            ['Very Unsatisfied', 100],
-		            ['Very Satified', 80]
+		            ['Satisfied', 32],
+		            ['Neutral', 5],
+		            ['Unsatisfied', 20],
+		            ['Very Unsatisfied', 15],
+		            ['Very Satified', 28]
 		        ],
 		        type : 'donut',
 		        onclick: function (d, i) { console.log("onclick", d, i); },
@@ -26,9 +26,10 @@
 		    },
 		    donut: {
 		        title: "5632 votes",
+		        //width: 50,
 				label: {
-    				show: true
-    			,	threshold: 0.1
+    				show: false
+    			,	threshold: 0.06
     			,	expand: true	
   				}
 		    }
