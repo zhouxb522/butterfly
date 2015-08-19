@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <link href="c3.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="chart" style="width:800px;"></div>
+
+    <script src="d3.js" charset="utf-8"></script>
+    <script src="c3.js"></script>
+    <script>
+      var chart = c3.generate({
+        padding: {
+            top: 50,
+            right: 400
+        },
+        color: {
+            pattern: ['red', '#ff8c00','#7cfc00', '#32cd32',  '#dcdcdc']
+        },
+        data: {
+          columns: [
+            ['Strongly Disagree', 3, 3],
+            ['Disagree', 8, 7],
+            ['Neither Agree nor Disagree', 21, 20],
+            ['Agree', 48, 50],
+            ['Strongly Agree', 20, 20]
+            /*['data1', 0, 0, 15, 0, 0],
+            ['data2', 68, 0, 0, 0, 0],
+            ['data3', 0, 0, 0, 6, 0],
+            ['data4', 0, 26, 0, 0, 0],
+            ['data5', 0, 0, 0, 0, 8]*/
+          ],
+          /*axes: {
+            'I would like to receive regular new job offerings similar to e.g LinkedIn or XING': 'y',
+            'Others (please specify)': 'y2'
+          },*/
+          type: 'bar',
+          groups: [
+            ['Strongly Disagree', 'Disagree', 'Neither Agree nor Disagree', 'Agree', 'Strongly Agree']
+          ]
+          /*groups: [
+            ['data1', 'data2', 'data3', 'data4', 'data5']
+          ]*/
+          // onclick: function (d, element) { console.log("onclick", d, element); },
+          // onmouseover: function (d) { console.log("onmouseover", d); },
+          // onmouseout: function (d) { console.log("onmouseout", d); }
+        },
+        legend: {
+          show: false
+          /*position: 'top'*/
+          /*inset: {
+            anchor: 'bottom-left',
+            x: 20,
+            y: 10,
+            step: 2
+          }*/
+        },
+        axis: {
+          x: {
+            type: 'categorized',            
+            show: true,
+            label: {
+               text: 'Questions',
+               position: 'outer-center'
+            },
+            // max: 5,
+            tick: {
+              //values: ['', '', '7362 Votes Q1', '7341 Votes Q2'],
+              outer: false,
+              centered: true,
+              format: function (x) {
+                if(x==0){
+                  return '7362 Votes\n Q1'
+                }
+                if(x==1){
+                  return '7341 Votes\n Q2'
+                }
+                return ''; 
+              }
+              //fit: true
+              
+              //count: 3
+              // max: 1
+            }
+          },
+          y: {
+              max: 100,
+              label: {
+               text: 'Vote Rate',
+               position: 'inner-top'
+              },
+              // min: 0,
+              tick: {
+                outer: false,
+                values: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+              // format: d3.format('$,')
+                format: function (d) { return d + '%'; }
+              }
+          }
+          /*y2: {
+            show: true,
+            max: 100,
+              // min: 0,
+            tick: {
+               values: [],
+              // format: d3.format('$,')
+               format: function (d1) { return d1 + '%'; }
+            }
+          }*/
+        },
+        grid: {
+            /*x: {
+              show: true,
+              lines: [
+                {value: 2, text: 'Label on 2'},
+                {value: 5, text: 'Label on 5', class: 'label-5'},
+                {value: 6, text: 'Label on 6', position: 'start'}
+              ]
+            }*/
+            y: {
+              show: true
+              /*lines: [
+                {value: 10},
+                {value: 20},
+                {value: 30},
+                {value: 40},
+                {value: 50},
+                {value: 60},
+                {value: 70},
+                {value: 80},
+                {value: 90},
+                {value: 100}
+              ]*/
+            }
+          },
+        bar: {
+          width: {
+            ratio: 0.5
+          }
+          // zerobased: false
+        },
+        tooltip: {
+          grouped: false,
+          // contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+          //     for (key in d) {
+          //       alert('first ' + key + ':' + d[key]);
+          //       for (key2 in d[key]) {
+          //         alert('second ' + key2 + ':' + d[key][key2]);
+          //       };
+          //     };
+          //     //alert('color is ' + color(d));
+          //     return "<div style='color:"+color(d[0])+"'>"+defaultValueFormat(d[0].value)+"</div>"; // formatted html as you want
+          // }
+          format: {
+            title: function (x) { return ''; }
+            //name: function (name, ratio, id, index) { return ''; }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

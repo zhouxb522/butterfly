@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <link href="c3.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="chart" style="width:800px;"></div>
+
+    <script src="d3.js" charset="utf-8"></script>
+    <script src="c3.js"></script>
+    <script>
+      var chart = c3.generate({
+        padding: {
+            top: 50
+        },
+        color: {
+            pattern: ['yellow', '#2ca02c', '#98df8a', '#aec7e8', 'red']
+        },
+        data: {
+          columns: [
+            ['I would like to receive regular new job offerings similar to e.g LinkedIn or XING', 0, 0, 15, 0, 0],
+            ['I prefer to pro-actively search for new opportunities on my own(e.g in GOM and/or contact my personal networks)', 68, 0, 0, 0, 0],
+            ['I would like to receive my job offerings only by my manager', 0, 0, 0, 6, 0],
+            ['I am not interested in new job opportunities', 0, 26, 0, 0, 0],
+            ['Others (please specify)', 0, 0, 0, 0, 8]
+            /*['data1', 0, 0, 15, 0, 0],
+            ['data2', 68, 0, 0, 0, 0],
+            ['data3', 0, 0, 0, 6, 0],
+            ['data4', 0, 26, 0, 0, 0],
+            ['data5', 0, 0, 0, 0, 8]*/
+          ],
+          /*axes: {
+            'I would like to receive regular new job offerings similar to e.g LinkedIn or XING': 'y',
+            'Others (please specify)': 'y2'
+          },*/
+          type: 'bar',
+          groups: [
+            ['I would like to receive regular new job offerings similar to e.g LinkedIn or XING', 'I prefer to pro-actively search for new opportunities on my own(e.g in GOM and/or contact my personal networks)', 'I would like to receive my job offerings only by my manager', 'I am not interested in new job opportunities', 'Others (please specify)']
+          ]
+          /*groups: [
+            ['data1', 'data2', 'data3', 'data4', 'data5']
+          ]*/
+          // onclick: function (d, element) { console.log("onclick", d, element); },
+          // onmouseover: function (d) { console.log("onmouseover", d); },
+          // onmouseout: function (d) { console.log("onmouseout", d); }
+        },
+        legend: {
+          show: false,
+          /*position: 'top'*/
+          inset: {
+            anchor: 'bottom-left',
+            x: 20,
+            y: 10,
+            step: 2
+          }
+        },
+        axis: {
+          x: {
+            type: 'categorized',
+            show: true,
+            // max: 5,
+            tick: {
+              outer: false,
+              values: [],
+              centered: true,
+              //format: function (x) { return ""; },
+              fit: true
+              
+              //count: 5
+              // max: 1
+            }
+          },
+          y: {
+              max: 100,
+              // min: 0,
+              tick: {                
+                values: [0, 25, 50, 75, 100],
+                outer: false,
+              // format: d3.format('$,')
+                format: function (d) { return d + '%'; }
+              }
+          },
+          y2: {
+            show: true,
+            max: 100,
+              // min: 0,
+            tick: {
+              outer: false,
+               values: [],
+              // format: d3.format('$,')
+               format: function (d1) { return d1 + '%'; }
+            }
+          }
+        },
+        grid: {
+            /*x: {
+              show: true,
+              lines: [
+                {value: 2, text: 'Label on 2'},
+                {value: 5, text: 'Label on 5', class: 'label-5'},
+                {value: 6, text: 'Label on 6', position: 'start'}
+              ]
+            }*/
+            y: {
+              show: true,
+              lines: [
+                {value: 25},
+                {value: 50},
+                {value: 75},
+                {value: 100}
+              ]
+            }
+          },
+        bar: {
+          width: {
+            ratio: 0.5
+          }
+          // zerobased: false
+        },
+        tooltip: {
+          grouped: false,
+          contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+              /*for (key in d) {
+                alert('first ' + key + ':' + d[key]);
+                for (key2 in d[key]) {
+                  alert('second ' + key2 + ':' + d[key][key2]);
+                };
+              };*/
+              //alert('color is ' + color(d));
+              return "<div style='color:"+color(d[0])+"'>"+defaultValueFormat(d[0].value)+"</div>"; // formatted html as you want
+          }
+          /*format: {
+            //title: function (x) { return ''; },
+            //name: function (name, ratio, id, index) { return ''; }
+          }*/
+        }
+      });
+    </script>
+  </body>
+</html>
