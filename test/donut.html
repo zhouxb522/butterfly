@@ -6,11 +6,13 @@
     </head>
     <body>
     <div class='chart'>
-    	<div id='chart'></div>
+    	<div id='chart1'></div>
+    	<div id='chart2'></div>
     </div>
     <script>
 
 		var chart = c3.generate({
+			bindto: '#chart1',
 		    data: {
 		        columns: [
 		            ['Satisfied', 32],
@@ -38,6 +40,36 @@
   				}
 		    }
 		});
+		var chart1 = c3.generate({
+			bindto: '#chart2',
+		    data: {
+		        columns: [
+		            ['Satisfied', 32],
+		            ['Neutral', 5],
+		            ['Unsatisfied', 20],
+		            ['Very Unsatisfied', 15],
+		            ['Very Satified', 28]
+		        ],
+		        type : 'donut',
+		        onclick: function (d, i) { 
+		        	console.log("onclick", d);
+		        	alert(d.id + "--" + d.value + "--" + d.ratio + "--" + d.index + "--" + d.name); 
+		        	console.log("onclick", d, i); 
+		        },
+		        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+		        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+		    },
+		    donut: {
+		        title: "5632 votes",
+		        //width: 5000,
+				label: {
+    				show: true
+    			,	threshold: 0.05
+    			,	expand: true	
+  				}
+		    }
+		});
+		
     </script>
     </body>
 </html>
