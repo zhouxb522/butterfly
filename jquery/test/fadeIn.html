@@ -9,6 +9,15 @@ $(document).ready(function(){
     $("#div2").fadeIn("slow");
     $("#div3").fadeIn(3000);
   });
+  $("div").click(function() {
+  	console.debug("this:", this.id);
+  	if (this.id === "div1") {
+  		alert("div1");
+  	} else {
+        alert("Hello world!");
+  	}
+    });
+         
 });
 </script>
 </head>
